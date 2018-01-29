@@ -1,14 +1,15 @@
 # 29 Jan 18 
+# for initial file restore, see http://wiki.br.hsa.ca/index.php/Disaster_Recovery 
 
 #proxy 
-docker create \
+docker run \
 	--name br_proxy \
 	-p 80:80 \
 	-v /var/run/docker.sock:/tmp/docker.sock:ro \
 	-d backup-br_proxy
 
 #notebook 
-docker create \
+docker run  \
 	--name br_notebook \
 	-e VIRTUAL_HOST=nb.br-qa.hsa.ca \
 	-p 8888:8888 \
@@ -17,7 +18,7 @@ docker create \
 	start-notebook.sh --NotebookApp.token=''
 
 #wiki DB
-docker create \
+docker run  \
         --name br_mysql \
         -v /home/br_mysql/conf.d:/etc/mysql/conf.d \
         -v /home/br_mysql/initdb.d:/docker-entrypoint-initdb.d \
@@ -26,7 +27,7 @@ docker create \
         -d backup-br_mysql 
 
 #wiki app
-docker create   \
+docker run   \
         --link br_mysql:mysql \
 	--name br_mediawiki \
 	-e VIRTUAL_HOST=wiki.br-qa.hsa.ca \
@@ -38,14 +39,14 @@ docker create   \
 
 
 #project DB
-docker create \
+docker run  \
 	--name br_postgres \
 	-e POSTGRES_PASSWORD=secret \
 	-e POSTGRES_USER=redmine \
 	-d backup-br_postgres
 
 #project app
-docker create \
+docker run  \
 	--name br_redmine \
 	-e VIRTUAL_HOST=hours.br-qa.hsa.ca \
 	-p 8088:3000 \
