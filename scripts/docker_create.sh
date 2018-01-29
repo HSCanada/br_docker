@@ -1,14 +1,14 @@
-# 18 Aug 17
+# 29 Jan 18 
 
 #proxy 
-docker run \
+docker create \
 	--name br_proxy \
 	-p 80:80 \
 	-v /var/run/docker.sock:/tmp/docker.sock:ro \
 	-d backup-br_proxy
 
 #notebook 
-docker run \
+docker create \
 	--name br_notebook \
 	-e VIRTUAL_HOST=nb.br-qa.hsa.ca \
 	-p 8888:8888 \
@@ -17,7 +17,7 @@ docker run \
 	start-notebook.sh --NotebookApp.token=''
 
 #wiki DB
-docker run \
+docker create \
         --name br_mysql \
         -v /home/br_mysql/conf.d:/etc/mysql/conf.d \
         -v /home/br_mysql/initdb.d:/docker-entrypoint-initdb.d \
@@ -26,7 +26,7 @@ docker run \
         -d backup-br_mysql 
 
 #wiki app
-docker run  \
+docker create   \
         --link br_mysql:mysql \
 	--name br_mediawiki \
 	-e VIRTUAL_HOST=wiki.br-qa.hsa.ca \
@@ -38,14 +38,14 @@ docker run  \
 
 
 #project DB
-docker run \
+docker create \
 	--name br_postgres \
 	-e POSTGRES_PASSWORD=secret \
 	-e POSTGRES_USER=redmine \
 	-d backup-br_postgres
 
 #project app
-docker run \
+docker create \
 	--name br_redmine \
 	-e VIRTUAL_HOST=hours.br-qa.hsa.ca \
 	-p 8088:3000 \
