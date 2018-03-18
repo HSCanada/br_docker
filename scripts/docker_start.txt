@@ -1,4 +1,4 @@
-# 22 Oct 17
+# 18 Mar 18
 
 #proxy 
 docker run \
@@ -14,7 +14,7 @@ docker run \
 	-p 8888:8888 \
 	-v /home/notebooks:/home/jovyan/work \ 
 	-d jupyter/br-notebook \
-	start-notebook.sh --NotebookApp.token=''
+	start.sh jupyter lab 
 
 #wiki DB
 docker run \
