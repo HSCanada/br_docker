@@ -13,7 +13,7 @@ docker run \
 	-e VIRTUAL_HOST=nb.br.hsa.ca \
 	-p 8888:8888 \
 	-v /home/notebooks:/home/jovyan/work \ 
-	-d jupyter/br-notebook \
+	-d jupyter:br_notebook \
 	start.sh jupyter lab 
 
 #wiki DB

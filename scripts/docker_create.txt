@@ -24,7 +24,7 @@ make build-all
 cd /home/br_docker/br_notebook
 
 
-docker build -t jupyter/br-notebook .
+docker build -t jupyter/br_notebook .
 
 
 docker stop br_notebook 
