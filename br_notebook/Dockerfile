@@ -18,5 +18,5 @@ RUN conda install -y \
 	python-decouple \
 	mpld3 && \
     conda remove --quiet --yes --force qt pyqt && \
-    conda clean -tipsy  \
+    conda clean -tipsy   
  

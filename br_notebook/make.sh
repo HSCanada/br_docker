@@ -1,1 +1,1 @@
-docker build -t jupyter:br-notebook  .
+docker build -t jupyter:br_notebook  .
