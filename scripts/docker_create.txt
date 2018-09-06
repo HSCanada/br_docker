@@ -82,3 +82,13 @@ docker run \
         -p 5432:5432 \
         -d postgres
 
+docker run \
+	--name br_observium \
+	-e VIRTUAL_HOST=scan.br.hsa.ca \
+	-v /home/observium/config:/config \
+	-v /home/observium/logs:/opt/observium/logs \
+	-v /home/observium/rrds:/opt/observium/rrd \
+	-p 8668:8668 \
+	-d zuhkov/observium
+
+# login to obs, /opt/observium/adduser admin admin 10
