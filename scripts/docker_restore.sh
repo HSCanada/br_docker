@@ -1,3 +1,4 @@
+# update 9 Sep 18, qa rule to prod
 # 29 Jan 18 
 # for initial file restore, see http://wiki.br.hsa.ca/index.php/Disaster_Recovery 
 
@@ -9,13 +10,14 @@ docker run \
 	-d backup-br_proxy
 
 #notebook 
-docker run  \
+docker run \
 	--name br_notebook \
-	-e VIRTUAL_HOST=nb.br-qa.hsa.ca \
+	-e VIRTUAL_HOST=nb.br.hsa.ca \
 	-p 8888:8888 \
-	-v /home/notebooks:/home/jovyan/work \ 
-	-d backup-br_notebook \
-	start-notebook.sh --NotebookApp.token=''
+	-v /home/notebooks:/home/jovyan/work \
+	-d backup-br_notebook  \
+	start.sh jupyter lab 
+
 
 #wiki DB
 docker run  \
@@ -30,7 +32,7 @@ docker run  \
 docker run   \
         --link br_mysql:mysql \
 	--name br_mediawiki \
-	-e VIRTUAL_HOST=wiki.br-qa.hsa.ca \
+	-e VIRTUAL_HOST=wiki.br.hsa.ca \
         -p 8080:80 \
         -v /home/br_mediawiki/config/LocalSettings.php:/var/www/html/LocalSettings.php \
         -v /home/br_mediawiki/images:/var/www/html/images \
@@ -48,7 +50,7 @@ docker run  \
 #project app
 docker run  \
 	--name br_redmine \
-	-e VIRTUAL_HOST=hours.br-qa.hsa.ca \
+	-e VIRTUAL_HOST=hours.br.hsa.ca \
 	-p 8088:3000 \
 	-v /home/br_redmine/plugins:/usr/src/redmine/plugins \
 	--link br_postgres:postgres \
