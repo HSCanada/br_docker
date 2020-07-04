@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 # working folders
 br2*/
+*.swp
 # C extensions
 *.so
 
