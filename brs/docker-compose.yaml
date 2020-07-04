@@ -8,7 +8,7 @@ services:
       - overlay
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-
+      - ./br2_proxy_data/nginx/vhost.d:/etc/nginx/vhost.d
   mariadb:
     image: 'docker.io/bitnami/mariadb:10.3-debian-10'
     networks:
@@ -54,7 +54,7 @@ services:
       - nginx-proxy
 
   redmine:
-    image: 'docker.io/bitnami/redmine:4-debian-10'
+    build: ./hub
     ports:
       - '3000:3000'
     networks:
@@ -73,7 +73,7 @@ services:
       - nginx-proxy
         
   jupyter:
-    image: 'docker.io/jupyter/scipy-notebook:latest'
+    build: ./jhub
     ports:
       - '8888:8888'
     networks:
