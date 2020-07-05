@@ -6,6 +6,7 @@ __pycache__/
 br2*/
 *.swp
 *.zip
+*.sql
 redmine_*/
 
 # C extensions
