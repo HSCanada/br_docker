@@ -49,6 +49,7 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
       - BR_DOMAIN
       - MEDIAWIKI_HOST=wiki.${BR_DOMAIN}
+      - MEDIAWIKI_WIKI_NAME=${BR_MEDIAWIKI_WIKI_NAME}
       - VIRTUAL_HOST=wiki.${BR_DOMAIN}
       - VIRTUAL_PORT=8080
     volumes:
