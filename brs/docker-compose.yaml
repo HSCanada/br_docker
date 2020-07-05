@@ -36,7 +36,7 @@ services:
       - ./br2_postgresql_data:/bitnami/postgresql
       
   mediawiki:
-    build: ./wiki
+    build: ./docker_wiki
     ports:
       - '8080:8080'
     networks:
@@ -58,7 +58,7 @@ services:
       - nginx-proxy
 
   redmine:
-    build: ./hub
+    build: ./docker_hub
     ports:
       - '3000:3000'
     networks:
@@ -77,7 +77,7 @@ services:
       - nginx-proxy
         
   jupyter:
-    build: ./jhub
+    build: ./docker_jhub
     ports:
       - '8888:8888'
     networks:
