@@ -4,11 +4,15 @@ services:
     image: 'jwilder/nginx-proxy'
     ports:
       - '80:80'
+      - '433:433'
     networks:
       - overlay
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./br2_proxy_data/nginx/vhost.d:/etc/nginx/vhost.d
+      - ./br2_proxy_data/nginx/certs:/etc/nginx/certs:ro
+      - ./br2_proxy_data/nginx/html:/usr/share/nginx/html
+
   mariadb:
     image: 'docker.io/bitnami/mariadb:10.3-debian-10'
     networks:
@@ -32,7 +36,7 @@ services:
       - ./br2_postgresql_data:/bitnami/postgresql
       
   mediawiki:
-    image: 'docker.io/bitnami/mediawiki:1-debian-10'
+    build: ./wiki
     ports:
       - '8080:8080'
     networks:
