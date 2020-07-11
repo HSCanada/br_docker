@@ -23,7 +23,7 @@ services:
       - MARIADB_DATABASE=bitnami_mediawiki
     volumes:
       - mariadb_data:/bitnami/mariadb
-        #- ./br2_mariadb_data:/bitnami/mariadb
+        #      - ./br2_mariadb_data:/bitnami/mariadb
 
   postgresql:
     image: 'docker.io/bitnami/postgresql:11-debian-10'
@@ -34,8 +34,8 @@ services:
       - POSTGRESQL_USERNAME=bn_redmine
       - POSTGRESQL_DATABASE=bitnami_redmine
     volumes:
-      - postgresql_data:/bitnami/postgresql
-        #- ./br2_postgresql_data:/bitnami/postgresql
+      -  postgresql_data:/bitnami/postgresql
+            #      - ./br2_postgresql_data:/bitnami/postgresql
       
   mediawiki:
     build: ./wiki
@@ -62,6 +62,9 @@ services:
       - nginx-proxy
 
   redmine:
+    # 1. init, OR
+    #image: bitnami/redmine:4-debian-10
+    # 2. use plugins image
     build: ./hub
     ports:
       - '3000:3000'
@@ -76,7 +79,7 @@ services:
       - VIRTUAL_PORT=3000
     volumes:
       - redmine_data:/bitnami
-        # - ./br2_redmine_data:/bitnami
+        #      - ./br2_redmine_data:/bitnami
     depends_on:
       - postgresql
       - nginx-proxy
