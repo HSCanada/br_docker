@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 # working folders
-br2*/
+develop/
 *.swp
 *.zip
 *.sql
