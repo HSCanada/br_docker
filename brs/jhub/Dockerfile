@@ -11,6 +11,6 @@ RUN conda install -y \
     papermill=2.1.* \
     pydot=1.4.* \
 #    jupytext=1.5.* \
-    plotly=4.8.* 
-
-RUN conda clean -tipsy
+    plotly=4.8.* \
+&& conda clean -tipsy
+#RUN conda clean -tipsy

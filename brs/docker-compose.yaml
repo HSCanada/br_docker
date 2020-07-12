@@ -10,9 +10,6 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - nginx_data:/etc/nginx
-        #      - ./br2_proxy_data/nginx/vhost.d:/etc/nginx/vhost.d
-        #      - ./br2_proxy_data/nginx/certs:/etc/nginx/certs:ro
-        #      - ./br2_proxy_data/nginx/html:/usr/share/nginx/html
 
   mariadb:
     image: 'docker.io/bitnami/mariadb:10.3-debian-10'
@@ -24,7 +21,6 @@ services:
       - MARIADB_DATABASE=bitnami_mediawiki
     volumes:
       - mariadb_data:/bitnami/mariadb
-        #      - ./br2_mariadb_data:/bitnami/mariadb
 
   postgresql:
     image: 'docker.io/bitnami/postgresql:11-debian-10'
@@ -36,7 +32,6 @@ services:
       - POSTGRESQL_DATABASE=bitnami_redmine
     volumes:
       -  postgresql_data:/bitnami/postgresql
-            #      - ./br2_postgresql_data:/bitnami/postgresql
       
   mediawiki:
     build: ./wiki
@@ -57,7 +52,6 @@ services:
       - VIRTUAL_PORT=8080
     volumes:
       - mediawiki_data:/bitnami/mediawiki
-        #- ./br2_mediawiki_data:/bitnami/mediawiki
     depends_on:
       - mariadb
       - nginx-proxy
@@ -80,7 +74,6 @@ services:
       - VIRTUAL_PORT=3000
     volumes:
       - redmine_data:/bitnami
-        #      - ./br2_redmine_data:/bitnami
     depends_on:
       - postgresql
       - nginx-proxy
@@ -97,7 +90,6 @@ services:
       - VIRTUAL_PORT=8888
     volumes:
       - jupyter_data:/home/jovyan/work
-        #- ./br2_jupyter_data:/home/jovyan/work
     depends_on:
       - nginx-proxy
     entrypoint: ["start.sh","jupyter", "lab"]
@@ -130,4 +122,4 @@ volumes:
 
 networks:
   overlay:
-          #host:
+  #host:
