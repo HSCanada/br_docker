@@ -4,10 +4,9 @@ __pycache__/
 *$py.class
 # working folders
 develop/
+src_data/
 *.swp
 *.zip
-*.sql
-redmine_*/
 
 # C extensions
 *.so
