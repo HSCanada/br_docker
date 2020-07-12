@@ -9,6 +9,7 @@ services:
       - overlay 
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - nginx_data:/etc/nginx
         #      - ./br2_proxy_data/nginx/vhost.d:/etc/nginx/vhost.d
         #      - ./br2_proxy_data/nginx/certs:/etc/nginx/certs:ro
         #      - ./br2_proxy_data/nginx/html:/usr/share/nginx/html
@@ -123,6 +124,8 @@ volumes:
   redmine_data:
     driver: local
   jupyter_data:
+    driver: local
+  nginx_data:
     driver: local
 
 networks:
