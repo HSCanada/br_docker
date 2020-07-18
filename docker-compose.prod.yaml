@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nginx-proxy:
+  mariadb:
+    restart: "always"
+  postgresql:
+    restart: "always"
+  mediawiki:
+    restart: "always"
+  redmine:
+    build: ./hub
+    restart: "always"
+  jupyter:
+    restart: "always"
+  web:
+    restart: "always"
