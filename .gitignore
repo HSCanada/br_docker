@@ -7,6 +7,11 @@ data/
 redmine*/
 *.swp
 *.zip
+redmine_agile/
+redmine_checklists/
+redmineup_tags/
+redmine_zenedit/
+
 
 # C extensions
 *.so
