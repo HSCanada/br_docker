@@ -2,6 +2,7 @@
     set -e
     set -u
     set -o pipefail
+#    set -x
 
 # read params, for prefix
 file=".env"
@@ -26,4 +27,9 @@ for v in $(docker volume ls -f name=^$COMPOSE_PROJECT_NAME -q); do
   echo "$(date) |  $v"
 done
 cd ..
+# offline backup
+if [ -d $MY_BACKUP_EXT_DIR ]; then
+    cp -r $MY_BACKUP_DIR $MY_BACKUP_EXT_DIR
+fi
+
 
