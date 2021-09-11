@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx-proxy:
-    image: 'jwilder/nginx-proxy:latest'
+    image: 'jwilder/nginx-proxy'
     ports:
       - '80:80'
       - '433:433'
@@ -12,7 +12,7 @@ services:
       - nginx_data:/etc/nginx
 
   mariadb:
-    image: 'bitnami/mariadb:10.3-debian-10'
+    image: 'docker.io/bitnami/mariadb:10.3-debian-10'
     networks:
       - overlay
     environment:
@@ -23,7 +23,7 @@ services:
       - mariadb_data:/bitnami/mariadb
 
   postgresql:
-    image: 'bitnami/postgresql:11-debian-10'
+    image: 'docker.io/bitnami/postgresql:11-debian-10'
     networks:
       - overlay
     environment:
@@ -34,7 +34,7 @@ services:
       -  postgresql_data:/bitnami/postgresql
       
   mediawiki:
-    image: 'home_mediawiki:latest'
+    build: ./wiki
     ports:
       - '8080:8080'
     networks:
@@ -57,7 +57,10 @@ services:
       - nginx-proxy
 
   redmine:
-    image: 'bitnami/redmine:4-debian-10'
+    # 1. init, OR
+    image: bitnami/redmine:4-debian-10
+    # 2. use plugins image
+    #build: ./hub
     ports:
       - '3000:3000'
     networks:
@@ -76,7 +79,7 @@ services:
       - nginx-proxy
         
   jupyter:
-    image: 'home_jupyter:latest'
+    build: ./jhub
     ports:
       - '8888:8888'
     networks:
@@ -92,7 +95,7 @@ services:
     entrypoint: ["start.sh","jupyter", "lab"]
         
   web:
-    image: 'nginx:latest'
+    image: 'nginx'
     ports:
       - '8081:80'
     networks:
