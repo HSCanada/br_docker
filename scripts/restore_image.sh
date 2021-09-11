@@ -1,8 +1,17 @@
-docker load -i ./data/home_jupyter:latest_20210908.tar 
-docker load -i ./data/bitnami:mariadb:10.3-debian-10_20210908.tar 
-docker load -i ./data/home_mediawiki:latest_20210908.tar 
-docker load -i ./data/jwilder:nginx-proxy:latest_20210908.tar 
-docker load -i ./data/bitnami:postgresql:11-debian-10_20210908.tar 
-docker load -i ./data/bitnami:redmine:4-debian-10_20210908.tar 
-docker load -i ./data/nginx:latest_20210908.tar 
+#!/bin/bash
+
+echo '...jupyter'
+docker load -i ./data/jupyter_image_backup.tar 
+echo '...maria'
+docker load -i ./data/mariadb_image_backup.tar 
+echo '...mediawiki'
+docker load -i ./data/mediawiki_image_backup.tar 
+echo '...proxy'
+docker load -i ./data/nginx-proxy_image_backup.tar 
+echo '...postgres'
+docker load -i ./data/postgresql_image_backup.tar 
+echo '...redmine'
+docker load -i ./data/redmine_image_backup.tar 
+echo '...web'
+docker load -i ./data/web_image_backup.tar 
 
