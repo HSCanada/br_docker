@@ -1,15 +1,15 @@
 services:
-  nginx-proxy:
-    image: 'jwilder/nginx-proxy:latest'
-    ports:
-      - '80:80'
-      - '433:433'
-    networks:
-      - overlay 
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - nginx_data:/etc/nginx
-
+#  nginx-proxy:
+#    image: 'jwilder/nginx-proxy:latest'
+#    ports:
+#      - '80:80'
+#      - '433:433'
+#    networks:
+#      - overlay 
+#    volumes:
+#      - /var/run/docker.sock:/tmp/docker.sock:ro
+#      - nginx_data:/etc/nginx
+#
   mariadb:
     image: 'bitnami/mariadb:latest'
     networks:
@@ -56,10 +56,10 @@ services:
       - mediawiki_data:/bitnami/mediawiki
     depends_on:
       - mariadb
-      - nginx-proxy
+      #- nginx-proxy
 
   redmine:
-    image: 'redmine'
+    image: 'bitnamilegacy/redmine'
     ports:
       - '3001:3000'
     networks:
@@ -73,11 +73,11 @@ services:
       - VIRTUAL_HOST=hub.${MY_DOMAIN}
       - VIRTUAL_PORT=3001
     volumes:
-      - redmine_data:/usr/src/redmine/files
-      #- redmine_data:/bitnami
+      #- redmine_data:/usr/src/redmine/files
+      - redmine_data:bitnami/bitnami
     depends_on:
       - postgresql
-      - nginx-proxy
+      #- nginx-proxy
         
   jupyter:
     image: 'jupyter/scipy-notebook'
@@ -91,24 +91,24 @@ services:
       - VIRTUAL_PORT=8888
     volumes:
       - jupyter_data:/home/jovyan/work
-    depends_on:
-      - nginx-proxy
+    #depends_on:
+    #  - nginx-proxy
     entrypoint: ["start.sh","jupyter", "lab"]
         
-  web:
-    image: 'nginx:latest'
-    ports:
-      - '8081:80'
-    networks:
-      - overlay
-    environment:
-      - VIRTUAL_HOST=web.${MY_DOMAIN}
-      - VIRTUAL_PORT=8081
-      - NGINX_HOST=web.${MY_DOMAIN}
-    volumes:
-      - web_data:/usr/share/nginx/html
-    depends_on:
-      - nginx-proxy
+#  web:
+#    image: 'nginx:latest'
+#    ports:
+#      - '8081:80'
+#    networks:
+#      - overlay
+#    environment:
+#      - VIRTUAL_HOST=web.${MY_DOMAIN}
+#      - VIRTUAL_PORT=8081
+#      - NGINX_HOST=web.${MY_DOMAIN}
+#    volumes:
+#      - web_data:/usr/share/nginx/html
+#    #depends_on:
+#    #  - nginx-proxy
 
 volumes:
   mariadb_data:
