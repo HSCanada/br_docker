@@ -79,21 +79,21 @@ services:
 #      #- nginx-proxy
 
        
-  jupyter:
-    image: 'jupyter/scipy-notebook'
-    ports:
-      - '8888:8888'
-    networks:
-      - overlay
-    environment:
-      - MY_DOMAIN
-      - VIRTUAL_HOST=jhub.${MY_DOMAIN}
-      - VIRTUAL_PORT=8888
-    volumes:
-      - jupyter_data:/home/jovyan/work
-    #depends_on:
-    #  - nginx-proxy
-    entrypoint: ["start.sh","jupyter", "lab"]
+        #  jupyter:
+        #    image: 'jupyter/scipy-notebook'
+        #    ports:
+        #      - '8888:8888'
+        #    networks:
+        #      - overlay
+        #    environment:
+        #      - MY_DOMAIN
+        #      - VIRTUAL_HOST=jhub.${MY_DOMAIN}
+        #      - VIRTUAL_PORT=8888
+        #    volumes:
+        #      - jupyter_data:/home/jovyan/work
+        #    #depends_on:
+        #    #  - nginx-proxy
+        #    entrypoint: ["start.sh","jupyter", "lab"]
         
 #  web:
 #    image: 'nginx:latest'

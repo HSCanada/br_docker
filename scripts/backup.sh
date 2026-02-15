@@ -7,9 +7,7 @@
 # read params, for prefix
 file=".env"
 if [ -f $file ]; then
-    set set -o allexport
-    source $file 
-    set set +o allexport
+	export $(grep -v '^#' $file  | xargs -d '\n')
 else
     echo "No $file file found" 1>&2
     exit 1
