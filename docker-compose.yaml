@@ -33,6 +33,7 @@ services:
       - POSTGRESQL_DATABASE=bitnami_redmine
     volumes:
       -  postgresql_data:/bitnami/postgresql
+
   redmine:
     image: 'bitnamilegacy/redmine'
     ports:
@@ -49,7 +50,7 @@ services:
       #- REDMINE_DATABASE_PASSWORD=bitnami
     volumes:
       #- redmine_data:/usr/src/redmine/files
-      - redmine_data:/bitnami/redmine
+      - ./redmine_data:/bitnami/redmine
     depends_on:
       - postgresql
       #- nginx-proxy
