@@ -1,30 +1,7 @@
 services:
-#  nginx-proxy:
-#    image: 'jwilder/nginx-proxy:latest'
-#    ports:
-#      - '80:80'
-#      - '433:433'
-#    networks:
-#      - overlay 
-#    volumes:
-#      - /var/run/docker.sock:/tmp/docker.sock:ro
-#      - nginx_data:/etc/nginx
-#
-#  mariadb:
-#    image: 'bitnami/mariadb:latest'
-#    networks:
-#      - overlay
-#    environment:
-#      - ALLOW_EMPTY_PASSWORD=yes
-#      - MARIADB_USER=bn_mediawiki
-#      - MARIADB_DATABASE=bitnami_mediawiki
-#    volumes:
-#      - mariadb_data:/bitnami/mariadb
-#
   postgresql:
-    #image: 'postgres'
-    #image: 'bitnami/postgresql:latest'
     image: 'bitnamilegacy/postgresql'
+    restart: unless-stopped
     networks:
       - overlay
     environment:
@@ -35,7 +12,9 @@ services:
       -  postgresql_data:/bitnami/postgresql
 
   redmine:
-    image: 'bitnamilegacy/redmine'
+    image: 'br_redmine'
+    #image: 'bitnamilegacy/redmine'
+    restart: unless-stopped
     ports:
       - '3001:3000'
     networks:
@@ -53,10 +32,23 @@ services:
       - ./redmine_data:/bitnami/redmine
     depends_on:
       - postgresql
-      #- nginx-proxy
+
+#  mariadb:
+#    image: 'bitnami/mariadb:latest'
+#    restart: unless-stopped
+#    networks:
+#      - overlay
+#    environment:
+#      - ALLOW_EMPTY_PASSWORD=yes
+#      - MARIADB_USER=bn_mediawiki
+#      - MARIADB_DATABASE=bitnami_mediawiki
+#    volumes:
+#      - mariadb_data:/bitnami/mariadb
+#
       
 #  mediawiki:
 #    image: 'mediawiki'
+#    restart: unless-stopped
 #    ports:
 #      - '8080:8080'
 #    networks:
@@ -79,21 +71,22 @@ services:
 #      #- nginx-proxy
 
        
-        #  jupyter:
-        #    image: 'jupyter/scipy-notebook'
-        #    ports:
-        #      - '8888:8888'
-        #    networks:
-        #      - overlay
-        #    environment:
-        #      - MY_DOMAIN
-        #      - VIRTUAL_HOST=jhub.${MY_DOMAIN}
-        #      - VIRTUAL_PORT=8888
-        #    volumes:
-        #      - jupyter_data:/home/jovyan/work
-        #    #depends_on:
-        #    #  - nginx-proxy
-        #    entrypoint: ["start.sh","jupyter", "lab"]
+#  jupyter:
+#    image: 'jupyter/scipy-notebook'
+#    restart: unless-stopped
+#    ports:
+#      - '8888:8888'
+#    networks:
+#      - overlay
+#    environment:
+#      - MY_DOMAIN
+#      - VIRTUAL_HOST=jhub.${MY_DOMAIN}
+#      - VIRTUAL_PORT=8888
+#    volumes:
+#      - jupyter_data:/home/jovyan/work
+#    #depends_on:
+#    #  - nginx-proxy
+#    entrypoint: ["start.sh","jupyter", "lab"]
         
 #  web:
 #    image: 'nginx:latest'
@@ -128,4 +121,3 @@ volumes:
 
 networks:
   overlay:
-  #host:
