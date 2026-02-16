@@ -33,42 +33,38 @@ services:
     depends_on:
       - postgresql
 
-#  mariadb:
-#    image: 'bitnami/mariadb:latest'
-#    restart: unless-stopped
-#    networks:
-#      - overlay
-#    environment:
-#      - ALLOW_EMPTY_PASSWORD=yes
-#      - MARIADB_USER=bn_mediawiki
-#      - MARIADB_DATABASE=bitnami_mediawiki
-#    volumes:
-#      - mariadb_data:/bitnami/mariadb
-#
+  mariadb:
+    image: 'bitnamilegacy/mariadb:latest'
+    restart: unless-stopped
+    networks:
+      - overlay
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=bn_mediawiki
+      - MARIADB_DATABASE=bitnami_mediawiki
+    volumes:
+      - mariadb_data:/bitnami/mariadb
+
       
-#  mediawiki:
-#    image: 'mediawiki'
-#    restart: unless-stopped
-#    ports:
-#      - '8080:8080'
-#    networks:
-#      - overlay
-#    environment:
-#      - MEDIAWIKI_DATABASE_HOST=mariadb
-#      - MEDIAWIKI_DATABASE_PORT_NUMBER=3306
-#      - MEDIAWIKI_DATABASE_USER=bn_mediawiki
-#      - MEDIAWIKI_DATABASE_NAME=bitnami_mediawiki
-#      - ALLOW_EMPTY_PASSWORD=yes
-#      - MY_DOMAIN
-#      - MEDIAWIKI_HOST=wiki.${MY_DOMAIN}
-#      - MEDIAWIKI_WIKI_NAME=${MY_MEDIAWIKI_WIKI_NAME}
-#      - VIRTUAL_HOST=wiki.${MY_DOMAIN}
-#      - VIRTUAL_PORT=8080
-#    volumes:
-#      - mediawiki_data:/bitnami/mediawiki
-#    depends_on:
-#      - mariadb
-#      #- nginx-proxy
+  mediawiki:
+    image: 'bitnamilegacy/mediawiki-archived'
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+    networks:
+      - overlay
+    environment:
+      - MEDIAWIKI_DATABASE_HOST=mariadb
+      - MEDIAWIKI_DATABASE_PORT_NUMBER=3306
+      - MEDIAWIKI_DATABASE_USER=bn_mediawiki
+      - MEDIAWIKI_DATABASE_NAME=bitnami_mediawiki
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MEDIAWIKI_HOST=wiki.${MY_DOMAIN}
+      - MEDIAWIKI_WIKI_NAME=${MY_MEDIAWIKI_WIKI_NAME}
+    volumes:
+      - ./mediawiki_data:/bitnami/mediawiki
+    depends_on:
+      - mariadb
 
        
 #  jupyter:

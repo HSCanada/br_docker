@@ -1,4 +1,4 @@
-FROM bitnami/mediawiki:1-debian-10
+FROM bitnamilegacy/mediawiki
 USER root
 RUN useradd -r -u 1001 -g root nonroot -d /home/nonroot/ -m &&  mkdir -p /var/lib/apt/lists/partial
 
