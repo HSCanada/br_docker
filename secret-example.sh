@@ -1,1 +1,0 @@
-export HAWSER_TOKEN=MYSECRET

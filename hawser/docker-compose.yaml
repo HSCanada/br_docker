@@ -1,0 +1,23 @@
+networks:
+  br_network_overlay:
+
+services:
+  hawser:
+    #image: 'fnsys/hawser:latest'
+    #image: 'ghcr.io/finsys/hawser:v0.2.28'
+    image: 'ghcr.io/finsys/hawser'
+    networks:
+      - br_network_overlay
+    container_name: hawser_edge
+    restart: unless-stopped
+    environment:
+      # run nginx proxy manager first
+      - DOCKHAND_SERVER_URL=wss://dockhand.dev.tcrow.io/api/hawser/connect
+        # run secret.sh first
+      - TOKEN=${HAWSER_TOKEN}
+        #- TOKEN=$HAWSER_TOKEN
+      - AGENT_NAME=br-server
+        #- LOG_LEVEL=debug
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+

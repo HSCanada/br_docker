@@ -1,0 +1,26 @@
+networks:
+  br_docker_overlay:
+    external: true
+
+services:
+  jupyter:
+    image: br_jupyter:latest
+    #build: ./jhub
+    restart: unless-stopped
+    networks:
+      - br_docker_overlay
+    ports:
+      - '8888:8888'
+        #    environment:
+        #      - MY_DOMAIN
+        #      - VIRTUAL_HOST=jhub.${MY_DOMAIN}
+        #      - VIRTUAL_PORT=8888
+    volumes:
+      - jupyter_data:/home/jovyan/work
+        #    depends_on:
+        #      - nginx-proxy
+    entrypoint: ["start.sh","jupyter", "lab"]
+        
+volumes:
+ jupyter_data:
+    driver: local

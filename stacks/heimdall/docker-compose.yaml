@@ -1,0 +1,23 @@
+networks:
+  br_docker_overlay:
+    external: true
+
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:2.7.6
+    container_name: heimdall
+    restart: unless-stopped
+    networks:
+      - br_docker_overlay
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+      - ALLOW_INTERNAL_REQUESTS=true #optional
+    volumes:
+      - ./data:/config
+    ports:
+      - 8085:80
+        #- 443:443
+
+
