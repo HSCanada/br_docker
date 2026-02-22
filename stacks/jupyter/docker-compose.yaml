@@ -11,14 +11,8 @@ services:
       - br_docker_overlay
     ports:
       - '8888:8888'
-        #    environment:
-        #      - MY_DOMAIN
-        #      - VIRTUAL_HOST=jhub.${MY_DOMAIN}
-        #      - VIRTUAL_PORT=8888
     volumes:
       - jupyter_data:/home/jovyan/work
-        #    depends_on:
-        #      - nginx-proxy
     entrypoint: ["start.sh","jupyter", "lab"]
         
 volumes:

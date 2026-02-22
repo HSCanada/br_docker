@@ -1,5 +1,6 @@
 networks:
-  br_network_overlay:
+  br_docker_overlay:
+    external: true
 
 services:
   hawser:
@@ -7,7 +8,7 @@ services:
     #image: 'ghcr.io/finsys/hawser:v0.2.28'
     image: 'ghcr.io/finsys/hawser'
     networks:
-      - br_network_overlay
+      - br_docker_overlay
     container_name: hawser_edge
     restart: unless-stopped
     environment:
