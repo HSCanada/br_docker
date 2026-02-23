@@ -7,9 +7,9 @@ __pycache__/
 *$py.class
 # working folders
 data/
-redmine*/
 *.swp
 *.zip
+legacy/
 redmine_agile/
 redmine_checklists/
 redmineup_tags/
