@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename = "BR_Wiki";
+$wgSitename = "BR-QA-Wiki";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
@@ -31,22 +31,18 @@ $wgSitename = "BR_Wiki";
 $wgScriptPath = "";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://wiki.br.hsa.ca";
+$wgServer = "http://wiki.br-qa.hsa.ca";
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
 
 ## The URL paths to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-#$wgLogos = [
-#	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-#	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-#];
 $wgLogos = [
-	'1x' => "$wgResourceBasePath/images/5/5e/Analytical_ICON-02-wiki2.png",
-	'icon' => "$wgResourceBasePath/images/5/5e/Analytical_ICON-02-wiki2.png"
+	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
+	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
 ];
-	
+
 ## UPO means: this is also a user preference option
 
 $wgEnableEmail = false;
@@ -64,7 +60,7 @@ $wgDBtype = "mysql";
 $wgDBserver = "database";
 $wgDBname = "my_wiki";
 $wgDBuser = "root";
-$wgDBpassword = "Ts,&DI/HNlhNR0Jr,1O%z&L4jtA6ouqo";
+$wgDBpassword = "orHAEvX90L\$I7v7W=;zKb+91gQtFHB<u";
 
 # MySQL specific settings
 $wgDBprefix = "";
@@ -106,14 +102,14 @@ $wgLocaltimezone = "UTC";
 ## be publicly accessible from the web.
 #$wgCacheDirectory = "$IP/cache";
 
-$wgSecretKey = "f1bac8d81caec6dd5978d3f2efbc9e3ceb4ad411eefc5d2958fb7a1985b0c8ec";
+$wgSecretKey = "a9ee1b0f2aeebef81562adc6cf96608f56ac80e2181409c2d7daefa4462dc695";
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
-$wgUpgradeKey = "199af8464bbc0069";
+$wgUpgradeKey = "7958e21932dec031";
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
@@ -143,6 +139,7 @@ wfLoadExtension( 'CategoryTree' );
 wfLoadExtension( 'Nuke' );
 wfLoadExtension( 'PageImages' );
 wfLoadExtension( 'ReplaceText' );
+wfLoadExtension( 'SecureLinkFixer' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WikiEditor' );
 
