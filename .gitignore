@@ -22,7 +22,6 @@ redmine_zenedit/
 # Distribution / packaging
 .Python
 env/
-build/
 develop-eggs/
 dist/
 downloads/
