@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename = "BR-QA-Wiki";
+$wgSitename = "BR_Wiki";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
@@ -31,22 +31,22 @@ $wgSitename = "BR-QA-Wiki";
 $wgScriptPath = "";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://wiki.br-qa.hsa.ca";
+$wgServer = "http://wiki.br.hsa.ca";
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
 
 ## The URL paths to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
+
+#$wgLogos = [ 
+#	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
+#	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
+#];
 $wgLogos = [
 	'1x' => "$wgResourceBasePath/images/5/5e/Analytical_ICON-02-wiki2.png",
 	'icon' => "$wgResourceBasePath/images/5/5e/Analytical_ICON-02-wiki2.png",
 ];
-#$wgLogos = [
-#	'1x' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-#	'icon' => "$wgResourceBasePath/resources/assets/change-your-logo.svg",
-#];
-
 
 ## UPO means: this is also a user preference option
 
@@ -64,8 +64,7 @@ $wgEmailAuthentication = true;
 $wgDBtype = "mysql";
 $wgDBserver = "database";
 $wgDBname = "my_wiki";
-$wgDBuser = "root";
-$wgDBpassword = "orHAEvX90L\$I7v7W=;zKb+91gQtFHB<u";
+$wgDBuser = "root"; $wgDBpassword = "%Tj[DOK3E0O*Wy{0AR;(~b`ibce1\$.9B";
 
 # MySQL specific settings
 $wgDBprefix = "";
@@ -84,7 +83,7 @@ $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgEnableUploads = true;
+$wgEnableUploads = false;
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 
@@ -107,14 +106,14 @@ $wgLocaltimezone = "UTC";
 ## be publicly accessible from the web.
 #$wgCacheDirectory = "$IP/cache";
 
-$wgSecretKey = "a9ee1b0f2aeebef81562adc6cf96608f56ac80e2181409c2d7daefa4462dc695";
+$wgSecretKey = "c5c4575f8a8e2427470d7936eb8cb1a7a66b50a8cc42f33e9f1c803a206fdd37";
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
-$wgUpgradeKey = "7958e21932dec031";
+$wgUpgradeKey = "ad182dd6c7172202";
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation

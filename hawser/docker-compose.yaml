@@ -13,9 +13,7 @@ services:
       # run nginx proxy manager first
       - DOCKHAND_SERVER_URL=${DOCKHAND_SERVER_URL}
       - TOKEN=${HAWSER_TOKEN}
-        #- TOKEN=$HAWSER_TOKEN
-      - AGENT_NAME=br-qa-server
+      - AGENT_NAME=${AGENT_NAME}
         #- LOG_LEVEL=debug
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      #- /srv/br_docker/stacks:/srv/br_docker/stacks
