@@ -1,0 +1,17 @@
+#networks:
+#  mynetwork:
+#    external: true
+
+services:
+  it-tools:
+    image: sharevb/it-tools:latest
+    #image: ghcr.io/sharevb/it-tools:latest
+      #image: corentinth/it-tools:2024.10.22-7ca5933
+    container_name: it-tools
+      #    networks:
+      #      - mynetwork
+    restart: unless-stopped
+    ports:
+      - 8081:8080
+        
+
